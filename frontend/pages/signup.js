@@ -1,7 +1,7 @@
-const Signup = props => (  
+const Signup = () => (
   <div>
     <p>Signup!</p>
   </div>
-)
+);
 
 export default Signup;

@@ -19,6 +19,6 @@ const Nav = () => (
       <a>Account</a>
     </Link>
   </NavStyles>
-)
+);
 
-export default Nav
+export default Nav;

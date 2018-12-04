@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Meta from '../components/Meta';
-import styled, {ThemeProvider, injectGlobal} from 'styled-components';
+import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import Header from './Header';
+import Meta from './Meta';
 
 const theme = {
   red: '#FF0000',
@@ -11,18 +11,18 @@ const theme = {
   offWhite: '#EDEDED',
   maxWidth: '1000px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
-}
+};
 
 const StyledPage = styled.div`
   background: white;
   color: ${props => props.theme.black};
-`
+`;
 
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin:  auto;
   padding: 2rem;
-`
+`;
 injectGlobal`
   @font-face {
     font-family: 'radnika_next';
@@ -49,7 +49,7 @@ injectGlobal`
     text-decoration: none;
     color: ${theme.black}
   }
-`
+`;
 
 class Page extends Component {
   render() {
@@ -62,8 +62,8 @@ class Page extends Component {
             {this.props.children}
           </Inner>
         </StyledPage>
-      </ThemeProvider> 
-    )
+      </ThemeProvider>
+    );
   }
 }
 
