@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import Title from './styles/Title';
-import ItemStyles from './styles/ItemStyles';
+import styled from 'styled-components';
 
+const Image = styled.img`
+  width: 100%;
+  max-width: 200px;
+`;
 export default class Item extends Component {
   static propTypes ={
     item: PropTypes.object.isRequired,
@@ -11,11 +14,10 @@ export default class Item extends Component {
   render() {
     const { item } = this.props;
     return (
-      <ItemStyles>
-        <Title>
-          {item.title}
-        </Title>
-      </ItemStyles>
+      <div>
+        <p>{item.title}</p>
+        {item.image.length > 1 ? <Image src={item.image} alt="itemImage" /> : null }
+      </div>
     );
   }
 }

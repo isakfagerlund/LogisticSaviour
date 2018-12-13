@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/isak-fagerlund-9a3546/LogisticSaviour/dev
-# timestamp: Mon Dec 03 2018 13:46:17 GMT+0100 (Central European Standard Time)
+# timestamp: Thu Dec 13 2018 14:40:44 GMT+0100 (Central European Standard Time)
 
 type AggregateItem {
   count: Int!
@@ -17,7 +17,7 @@ type BatchPayload {
 type Item implements Node {
   id: ID!
   title: String!
-  description: String!
+  description: String
   image: String
   largeImage: String
 }
@@ -34,7 +34,7 @@ type ItemConnection {
 
 input ItemCreateInput {
   title: String!
-  description: String!
+  description: String
   image: String
   largeImage: String
 }
@@ -68,7 +68,7 @@ enum ItemOrderByInput {
 type ItemPreviousValues {
   id: ID!
   title: String!
-  description: String!
+  description: String
   image: String
   largeImage: String
 }
