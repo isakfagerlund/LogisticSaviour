@@ -14,6 +14,7 @@ const Mutation = {
 
     return item;
   },
+
   updateItem(parent, args, ctx, info) {
     // first take a copy of the updates
     const updates = { ...args };
@@ -30,6 +31,7 @@ const Mutation = {
       info
     );
   },
+
   async deleteItem(parent, args, ctx, info) {
     const where = { id: args.id };
     // 1. find the item
@@ -39,6 +41,7 @@ const Mutation = {
     // 3. Delete it!
     return ctx.db.mutation.deleteItem({ where }, info);
   },
+
   async signup(parent, args, ctx, info){
     args.email = args.email.toLowerCase();
     // hash their password
@@ -59,6 +62,23 @@ const Mutation = {
   });
   
   return user;
+  },
+
+  async signin(parent, { email, password }, ctx, info) {
+    const user = await ctx.db.query.user({ where: { email }});
+    if(!user) {
+      throw new Error(`No such user found for ${email}`);
+    }
+    const valid = await bcrypt.compare(password, user.password);
+    if(!valid) {
+      throw new Error ('Invalid Password');
+    }
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365,
+    });
+    return user;
   }
 };
 
