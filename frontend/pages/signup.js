@@ -1,7 +1,12 @@
-const Signup = () => (
+import styled from 'styled-components';
+import Signup from '../components/Signup';
+import Signin from '../components/Signin';
+
+const SignupPage = () => (
   <div>
-    <p>Signup!</p>
+    <Signup />
+    <Signin />
   </div>
 );
 
-export default Signup;
+export default SignupPage;
